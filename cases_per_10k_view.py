@@ -72,11 +72,11 @@ if __name__ == "__main__":
             df_row=[h,r]
             df.loc[count]=df_row
             count+=1
-    df.to_csv('covid-cases.csv',index=False)
+
 
     new_df_dict={}
     pop_dict={}
-    #row_count=0
+
     for i in range(len(df)):
         if df['name'].iloc[i]=='Azuza':
             df['name'].iloc[i]='Azusa'
@@ -199,11 +199,9 @@ if __name__ == "__main__":
     not_done_df=not_done_df[not_done_df['_merge']=='left_only']
     missed_df=not_done_df[['name','count_x','slug','type','cases_per_10k_x']].copy()
     missed_df=missed_df.rename(columns={"count_x":"count","cases_per_10k_x":"cases_per_10k"})
-    missed_df.to_csv('missed.csv',index=False)
     for i in range(len(res['name'])):
 
         res['cases_per_10k'].iloc[i] = float(res['cases_per_10k'].iloc[i])
-    new_df.to_csv('covid-join.csv',index=False)
 
     geosource = GeoJSONDataSource(geojson = res.to_json())
 
