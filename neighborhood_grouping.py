@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import pandas as pd
 from bs4 import BeautifulSoup
+from urllib.request import urlopen
 import urllib.request
 import geopandas
 import math
