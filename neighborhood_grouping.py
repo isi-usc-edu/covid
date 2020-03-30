@@ -1,37 +1,12 @@
+#!/usr/bin/env python
 import pandas as pd
 from bs4 import BeautifulSoup
-from time import sleep
-import time
-import re
-import os
-import requests
-from urllib.parse import quote_plus
-from urllib.request import urlopen
-from random import randint
-from urllib.parse import urljoin
-import pandas as pd
-import math
 import urllib.request
 import geopandas
-from html.parser import HTMLParser
-from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from bs4 import BeautifulSoup
-import geopandas
-import pandas as pd
-import matplotlib.pyplot as plt
 import math
-import matplotlib.colors as mcolors
-import matplotlib.cm as cm
-import os
-import sys
-import csv
-import reverse_geocoder as rg
 from datetime import datetime
-import json
 from bokeh.io import show
-from bokeh.models import (CDSView, ColorBar, ColumnDataSource,CustomJS, CustomJSFilter, GeoJSONDataSource, HoverTool,LinearColorMapper, Slider)
-from bokeh.layouts import column, row, widgetbox
+from bokeh.models import ColorBar, GeoJSONDataSource, HoverTool, LinearColorMapper
 from bokeh.palettes import brewer
 from bokeh.plotting import figure
 
@@ -52,7 +27,6 @@ for i in range(len(df)):
         j=j.rstrip()
         mappings[j] = label
 pop_df=pd.DataFrame(population.items(), columns=['name', 'count'])
-pop_df.to_csv('population.csv',index=False)
 USER_AGENT = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/538.36'}
 
 hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
@@ -98,7 +72,6 @@ if __name__ == "__main__":
             df_row=[h,r]
             df.loc[count]=df_row
             count+=1
-    df.to_csv('covid-cases.csv',index=False)
 
     new_df_dict={}
 
@@ -195,11 +168,9 @@ if __name__ == "__main__":
     not_done_df=not_done_df[not_done_df['_merge']=='left_only']
     missed_df=not_done_df[['name','count_x','slug','type']].copy()
     missed_df=missed_df.rename(columns={"count_x":"count"})
-    missed_df.to_csv('missed.csv',index=False)
     for i in range(len(res['name'])):
 
         res['count'].iloc[i] = int(res['count'].iloc[i])
-    new_df.to_csv('covid-join.csv',index=False)
 
 
     geosource = GeoJSONDataSource(geojson = res.to_json())

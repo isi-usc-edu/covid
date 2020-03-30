@@ -1,37 +1,13 @@
-import pandas as pd
+#!/usr/bin/env python
 from bs4 import BeautifulSoup
-from time import sleep
-import time
-import re
-import os
-import requests
-from urllib.parse import quote_plus
-from urllib.request import urlopen
-from random import randint
-from urllib.parse import urljoin
 import pandas as pd
-import math
+from urllib.request import urlopen
 import urllib.request
 import geopandas
-from html.parser import HTMLParser
-from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from bs4 import BeautifulSoup
-import geopandas
-import pandas as pd
-import matplotlib.pyplot as plt
 import math
-import matplotlib.colors as mcolors
-import matplotlib.cm as cm
-import os
-import sys
-import csv
-import reverse_geocoder as rg
 from datetime import datetime
-import json
 from bokeh.io import show
-from bokeh.models import (CDSView, ColorBar, ColumnDataSource,CustomJS, CustomJSFilter, GeoJSONDataSource, HoverTool,LinearColorMapper, Slider)
-from bokeh.layouts import column, row, widgetbox
+from bokeh.models import ColorBar, GeoJSONDataSource, HoverTool, LinearColorMapper
 from bokeh.palettes import brewer
 from bokeh.plotting import figure
 
@@ -96,11 +72,11 @@ if __name__ == "__main__":
             df_row=[h,r]
             df.loc[count]=df_row
             count+=1
-    df.to_csv('covid-cases.csv',index=False)
+
 
     new_df_dict={}
     pop_dict={}
-    #row_count=0
+
     for i in range(len(df)):
         if df['name'].iloc[i]=='Azuza':
             df['name'].iloc[i]='Azusa'
@@ -223,11 +199,9 @@ if __name__ == "__main__":
     not_done_df=not_done_df[not_done_df['_merge']=='left_only']
     missed_df=not_done_df[['name','count_x','slug','type','cases_per_10k_x']].copy()
     missed_df=missed_df.rename(columns={"count_x":"count","cases_per_10k_x":"cases_per_10k"})
-    missed_df.to_csv('missed.csv',index=False)
     for i in range(len(res['name'])):
 
         res['cases_per_10k'].iloc[i] = float(res['cases_per_10k'].iloc[i])
-    new_df.to_csv('covid-join.csv',index=False)
 
     geosource = GeoJSONDataSource(geojson = res.to_json())
 
