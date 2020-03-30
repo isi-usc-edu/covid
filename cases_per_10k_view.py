@@ -187,7 +187,7 @@ if __name__ == "__main__":
         cases_per_10k.append(cases)
     new_df['cases_per_10k']=cases_per_10k
 
-    geo_data = geopandas.read_file("/Users/ashwinshreyasm/Downloads/la-county-neighborhoods-current/l.a._county_neighborhood_(current).shp",encoding='utf-8')
+    geo_data = geopandas.read_file("./la-county-neighborhoods-current/l.a._county_neighborhood_(current).shp",encoding='utf-8')
     geo_data.crs = {'init' :'epsg:4269'}
     res=geo_data.merge(new_df,on='name',how='left')
     for i in range(len(res)):
