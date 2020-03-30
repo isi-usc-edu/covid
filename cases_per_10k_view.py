@@ -1,38 +1,13 @@
 #!/usr/bin/env python
-import pandas as pd
 from bs4 import BeautifulSoup
-from time import sleep
-import time
-import re
-import os
-import requests
-from urllib.parse import quote_plus
-from urllib.request import urlopen
-from random import randint
-from urllib.parse import urljoin
 import pandas as pd
-import math
+from urllib.request import urlopen
 import urllib.request
 import geopandas
-from html.parser import HTMLParser
-from selenium import webdriver
-from selenium.common.exceptions import TimeoutException
-from bs4 import BeautifulSoup
-import geopandas
-import pandas as pd
-import matplotlib.pyplot as plt
 import math
-import matplotlib.colors as mcolors
-import matplotlib.cm as cm
-import os
-import sys
-import csv
-import reverse_geocoder as rg
 from datetime import datetime
-import json
 from bokeh.io import show
-from bokeh.models import (CDSView, ColorBar, ColumnDataSource,CustomJS, CustomJSFilter, GeoJSONDataSource, HoverTool,LinearColorMapper, Slider)
-from bokeh.layouts import column, row, widgetbox
+from bokeh.models import ColorBar, GeoJSONDataSource, HoverTool, LinearColorMapper
 from bokeh.palettes import brewer
 from bokeh.plotting import figure
 
