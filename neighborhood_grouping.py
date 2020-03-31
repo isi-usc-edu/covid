@@ -78,6 +78,9 @@ if __name__ == "__main__":
 
     #row_count=0
     for i in range(len(df)):
+        if df['name'].iloc[i]=='Unincorporated-San Francisquito Canyon/Boquet Canyon':
+            df['name'].iloc[i]='Unincorporated-San Francisquito Canyon/Bouquet Canyon'
+            
         if df['name'].iloc[i]=='Azuza':
             df['name'].iloc[i]='Azusa'
 
