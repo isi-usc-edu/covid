@@ -7,7 +7,8 @@ import geopandas
 import math
 from datetime import datetime
 from bokeh.io import show
-from bokeh.models import ColorBar, GeoJSONDataSource, HoverTool, LinearColorMapper
+from bokeh.models import Column, ColorBar, GeoJSONDataSource, HoverTool, LinearColorMapper
+from bokeh.models.widgets import Div
 from bokeh.palettes import brewer
 from bokeh.plotting import figure
 
@@ -220,6 +221,10 @@ if __name__ == "__main__":
     p.ygrid.grid_line_color = None
 
     neighborhoods = p.patches('xs','ys', source = geosource,fill_color ={'field' :'cases_per_10k','transform' : color_mapper},line_color = 'gray', line_width = 0.1, fill_alpha = 1)
+
+    div = Div(text="""<b>Los Angeles County Health Department is <a href="http://www.publichealth.lacounty.gov/media/Coronavirus/locations.htm">tracking the number of confirmed Covid-19 cases</a> in the region.<br/>The map below shows the number of cases for every 10,000 residents within each neighborhood.</b>""", width=750, height=50)
+
     p.add_tools(HoverTool(renderers = [neighborhoods],tooltips = [('Neighborhood','@name'),('Cases Per 10K','@cases_per_10k')]))
     p.add_layout(color_bar, 'below')
-    show(p)
+
+    show(Column(div, p))
