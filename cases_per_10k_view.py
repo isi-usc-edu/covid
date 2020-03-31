@@ -210,7 +210,7 @@ if __name__ == "__main__":
 
     color_mapper = LinearColorMapper(palette=palette,low=res['cases_per_10k'].min(),high=res['cases_per_10k'].max())
     color_bar = ColorBar(color_mapper = color_mapper,
-                     width = 500, height = 20,
+                     width = 750, height = 25,
                      border_line_color = None,
                      location = (0,0),
                      orientation = 'horizontal')
