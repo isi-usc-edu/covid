@@ -80,7 +80,7 @@ if __name__ == "__main__":
     for i in range(len(df)):
         if df['name'].iloc[i]=='Unincorporated-San Francisquito Canyon/Boquet Canyon':
             df['name'].iloc[i]='Unincorporated-San Francisquito Canyon/Bouquet Canyon'
-            
+
         if df['name'].iloc[i]=='Azuza':
             df['name'].iloc[i]='Azusa'
 
@@ -106,7 +106,7 @@ if __name__ == "__main__":
             new_df_dict['West Whittier-Los Nietos']=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]] == 'Temple-Beaudry':
-            if 'Temple-Beaudry' in new_df_dict:
+            if 'Temple-Beaudry' not in new_df_dict:
                 new_df_dict['Temple City']=int(df['count'].iloc[i])
             else:
                 new_df_dict['Temple City']+=int(df['count'].iloc[i])

@@ -81,108 +81,113 @@ if __name__ == "__main__":
     for i in range(len(df)):
         if df['name'].iloc[i]=='Unincorporated-San Francisquito Canyon/Boquet Canyon':
             df['name'].iloc[i]='Unincorporated-San Francisquito Canyon/Bouquet Canyon'
-            
+
         if df['name'].iloc[i]=='Azuza':
             df['name'].iloc[i]='Azusa'
 
         if mappings[df['name'].iloc[i]]=='Mt. Washington':
-            pop_dict['Mount Washington']=int(population['Mt. Washington'])
             new_df_dict['Mount Washington']=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]]=='Baldwin Hills' or mappings[df['name'].iloc[i]]=='Crenshaw District':
             if 'Baldwin Hills/Crenshaw' not in new_df_dict:
                 new_df_dict['Baldwin Hills/Crenshaw']=int(df['count'].iloc[i])
-                pop_dict['Baldwin Hills/Crenshaw']=population[mappings[df['name'].iloc[i]]]
             else:
                 new_df_dict['Baldwin Hills/Crenshaw']+=int(df['count'].iloc[i])
-                pop_dict['Baldwin Hills/Crenshaw']+=population[mappings[df['name'].iloc[i]]]
 
         elif mappings[df['name'].iloc[i]] == 'Silverlake':
-            pop_dict['Silver Lake']=int(population['Silverlake'])
             new_df_dict['Silver Lake']=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]] == 'Vernon Central' or mappings[df['name'].iloc[i]]=='West Vernon':
             if 'Vernon' not in new_df_dict:
-                pop_dict['Vernon']=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Vernon']=int(df['count'].iloc[i])
             else:
-                pop_dict['Vernon']+=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Vernon']+=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]] == 'West Whittier/Los Nietos':
-            pop_dict['West Whittier-Los Nietos']=population[mappings[df['name'].iloc[i]]]
             new_df_dict['West Whittier-Los Nietos']=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]] == 'Temple-Beaudry':
-            if 'Temple-Beaudry' in new_df_dict:
-                pop_dict['Temple City']=population[mappings[df['name'].iloc[i]]]
+            if 'Temple-Beaudry' not in new_df_dict:
                 new_df_dict['Temple City']=int(df['count'].iloc[i])
             else:
-                pop_dict['Temple City']+=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Temple City']+=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]]=='Melrose':
             if 'Fairfax' not in new_df_dict:
-                pop_dict['Fairfax']=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Fairfax']=int(df['count'].iloc[i])
             else:
-                pop_dict['Fairfax']+=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Fairfax']+=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]]=='Canyon Country':
             if 'Castaic Canyons' not in new_df_dict:
-                pop_dict['Castaic Canyons']=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Castaic Canyons']=int(df['count'].iloc[i])
             else:
-                pop_dict['Castaic Canyons']+=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Castaic Canyons']+=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]]=='Wholesale District' or mappings[df['name'].iloc[i]]=='Central':
             if 'Downtown' not in new_df_dict:
-                pop_dict['Downtown']=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Downtown']=int(df['count'].iloc[i])
             else:
-                pop_dict['Downtown']+=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Downtown']+=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]]=='Little Bangladesh':
             if 'Koreatown' not in new_df_dict:
-                pop_dict['Koreatown']=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Koreatown']=int(df['count'].iloc[i])
             else:
-                pop_dict['Koreatown']+=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Koreatown']+=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]]=='Crestview' or mappings[df['name'].iloc[i]]=='Miracle Mile' or mappings[df['name'].iloc[i]]=='Park La Brea' or mappings[df['name'].iloc[i]]=='Wilshire Center':
             if 'Mid-Wilshire' not in new_df_dict:
-                pop_dict['Mid-Wilshire']=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Mid-Wilshire']=int(df['count'].iloc[i])
             else:
-                pop_dict['Mid-Wilshire']+=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Mid-Wilshire']+=int(df['count'].iloc[i])
         elif mappings[df['name'].iloc[i]]=='Santa Monica Mountains':
             if 'Pacific Palisades' not in new_df_dict:
-                pop_dict['Pacific Palisades']=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Pacific Palisades']=int(df['count'].iloc[i])
             else:
-                pop_dict['Pacific Palisades']+=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Pacific Palisades']+=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]]=='Athens-Westmont':
             if 'Athens' not in new_df_dict:
-                pop_dict['Athens']=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Athens']=int(df['count'].iloc[i])
             else:
-                pop_dict['Athens']+=population[mappings[df['name'].iloc[i]]]
                 new_df_dict['Athens']+=int(df['count'].iloc[i])
 
         else:
             if mappings[df['name'].iloc[i]] not in new_df_dict:
-                pop_dict[mappings[df['name'].iloc[i]]]=population[mappings[df['name'].iloc[i]]]
                 new_df_dict[mappings[df['name'].iloc[i]]] = int(df['count'].iloc[i])
             else:
-                pop_dict[mappings[df['name'].iloc[i]]]+=population[mappings[df['name'].iloc[i]]]
                 new_df_dict[mappings[df['name'].iloc[i]]] += int(df['count'].iloc[i])
+
+    for name in new_df_dict:
+        if name=='Mount Washington':
+            pop_dict[name]=population['Mt. Washington']
+        elif name=='Baldwin Hills/Crenshaw':
+            pop_dict[name]=population['Baldwin Hills'] + population['Crenshaw District']
+        elif name=='Silver Lake':
+            pop_dict[name]=population['Silverlake']
+        elif name=='Vernon':
+            pop_dict[name]=population['Vernon Central'] + population['West Vernon']
+        elif name=='West Whittier-Los Nietos':
+            pop_dict[name]=population['West Whittier/Los Nietos']
+        elif name=='Temple-City':
+            pop_dict[name]=population['Temple-Beaudry']+population['Temple City']
+        elif name=='Fairfax':
+            pop_dict[name]=population['Melrose']
+        elif name=='Castaic Canyons':
+            pop_dict[name]=population['Canyon Country']
+        elif name=='Downtown':
+            pop_dict[name]=population['Downtown']+population['Wholesale District'] + population['Central']
+        elif name=='Koreatown':
+            pop_dict[name]=population['Koreatown']+population['Little Bangladesh']
+        elif name=='Mid-Wilshire':
+            pop_dict[name] = population['Crestview']+population['Park La Brea'] + population['Wilshire Center'] + population['Miracle Mile']
+        elif name=='Pacific Palisades':
+            pop_dict[name] = population['Santa Monica Mountains'] + population['Pacific Palisades']
+        elif name=='Athens':
+            pop_dict[name]=population['Athens-Westmont']
+        else:
+            pop_dict[name]=population[name]
 
     new_df=pd.DataFrame(new_df_dict.items(), columns=['name', 'count'])
     cases_per_10k=[]
