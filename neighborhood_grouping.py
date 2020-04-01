@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import pandas as pd
 from bs4 import BeautifulSoup
+from urllib.request import urlopen
 import urllib.request
 import geopandas
 import math
@@ -77,6 +78,9 @@ if __name__ == "__main__":
 
     #row_count=0
     for i in range(len(df)):
+        if df['name'].iloc[i]=='Unincorporated-San Francisquito Canyon/Boquet Canyon':
+            df['name'].iloc[i]='Unincorporated-San Francisquito Canyon/Bouquet Canyon'
+
         if df['name'].iloc[i]=='Azuza':
             df['name'].iloc[i]='Azusa'
 
@@ -102,7 +106,7 @@ if __name__ == "__main__":
             new_df_dict['West Whittier-Los Nietos']=int(df['count'].iloc[i])
 
         elif mappings[df['name'].iloc[i]] == 'Temple-Beaudry':
-            if 'Temple-Beaudry' in new_df_dict:
+            if 'Temple-Beaudry' not in new_df_dict:
                 new_df_dict['Temple City']=int(df['count'].iloc[i])
             else:
                 new_df_dict['Temple City']+=int(df['count'].iloc[i])
@@ -156,7 +160,7 @@ if __name__ == "__main__":
 
     new_df=pd.DataFrame(new_df_dict.items(), columns=['name', 'count'])
 
-    geo_data = geopandas.read_file("/Users/ashwinshreyasm/Downloads/la-county-neighborhoods-current/l.a._county_neighborhood_(current).shp",encoding='utf-8')
+    geo_data = geopandas.read_file("./la-county-neighborhoods-current/l.a._county_neighborhood_(current).shp",encoding='utf-8')
     geo_data.crs = {'init' :'epsg:4269'}
     res=geo_data.merge(new_df,on='name',how='left')
     for i in range(len(res)):
