@@ -46,15 +46,14 @@ if __name__ == "__main__":
     rows = table.find_all('tr')
     df=pd.DataFrame(columns=['name','count'])
     lb_pas=rows[3:5]
-    rows=rows[21:]
+    rows=rows[29:]
     rows=rows+lb_pas
     count=0
     for row in rows:
-        h=row.find('th')
-        r=row.find('td')
+        dat=row.findAll('td')
+        h=dat[0].extract().getText()
+        r=dat[1].extract().getText()
         if h is not None and r is not None:
-            h=h.text
-            r=r.text
             if 'City of ' in h:
                 h=h.replace('City of ','')
             if h.startswith('- '):
