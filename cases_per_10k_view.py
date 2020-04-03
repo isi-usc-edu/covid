@@ -46,7 +46,7 @@ if __name__ == "__main__":
     rows = table.find_all('tr')
     df=pd.DataFrame(columns=['name','count'])
     lb_pas=rows[3:5]
-    rows=rows[24:]
+    rows=rows[21:]
     rows=rows+lb_pas
     count=0
     for row in rows:
@@ -153,6 +153,12 @@ if __name__ == "__main__":
             else:
                 new_df_dict['Athens']+=int(df['count'].iloc[i])
 
+        elif mappings[df['name'].iloc[i]]=='Bassett':
+            if 'Avocado Heights' not in new_df_dict:
+                new_df_dict['Avocado Heights']=int(df['count'].iloc[i])
+            else:
+                new_df_dict['Avocado Heights']+=int(df['count'].iloc[i])
+
         else:
             if mappings[df['name'].iloc[i]] not in new_df_dict:
                 new_df_dict[mappings[df['name'].iloc[i]]] = int(df['count'].iloc[i])
@@ -186,6 +192,8 @@ if __name__ == "__main__":
             pop_dict[name] = population['Santa Monica Mountains'] + population['Pacific Palisades']
         elif name=='Athens':
             pop_dict[name]=population['Athens-Westmont']
+        elif name=='Avocado Heights':
+            pop_dict[name]=population['Bassett']
         else:
             pop_dict[name]=population[name]
 
