@@ -46,7 +46,7 @@ if __name__ == "__main__":
     rows = table.find_all('tr')
     df=pd.DataFrame(columns=['name','count'])
     lb_pas=rows[3:5]
-rows=rows[29:]
+    rows=rows[29:]
     rows=rows+lb_pas
     count=0
     for row in rows:
