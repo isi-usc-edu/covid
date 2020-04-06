@@ -37,7 +37,8 @@ hdr = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML,
        'Accept-Language': 'en-US,en;q=0.8',
        'Connection': 'keep-alive'}
 
-if __name__ == "__main__":
+
+def update():
     url='http://www.publichealth.lacounty.gov/media/Coronavirus/locations.htm'
     req=urllib.request.Request(url,headers=hdr)
     html_page=urlopen(req)
@@ -201,3 +202,7 @@ if __name__ == "__main__":
     p.add_tools(HoverTool(renderers = [neighborhoods],tooltips = [('Neighborhood','@name'),('Cases','@count')]))
     p.add_layout(color_bar, 'below')
     show(p)
+
+
+if __name__ == "__main__":
+    update()
