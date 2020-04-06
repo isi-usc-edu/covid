@@ -201,7 +201,7 @@ def update():
     neighborhoods = p.patches('xs','ys', source = geosource,fill_color ={'field' :'count','transform' : color_mapper},line_color = 'gray', line_width = 0.1, fill_alpha = 1)
     p.add_tools(HoverTool(renderers = [neighborhoods],tooltips = [('Neighborhood','@name'),('Cases','@count')]))
     p.add_layout(color_bar, 'below')
-    save(p, filename='neighborhood_grouping.html')
+    save(p, filename='./data/neighborhood_grouping.html')
 
 
 if __name__ == "__main__":

@@ -243,7 +243,7 @@ def update():
     p.add_tools(HoverTool(renderers = [neighborhoods],tooltips = [('Neighborhood','@name'),('Cases Per 10K','@cases_per_10k')]))
     p.add_layout(color_bar, 'below')
 
-    save(Column(div, p), filename='cases_per_10k_view.html')
+    save(Column(div, p), filename='./data/index.html')
 
 
 if __name__ == "__main__":
