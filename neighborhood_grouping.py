@@ -6,7 +6,7 @@ import urllib.request
 import geopandas
 import math
 from datetime import datetime
-from bokeh.io import show
+from bokeh.io import save
 from bokeh.models import ColorBar, GeoJSONDataSource, HoverTool, LinearColorMapper
 from bokeh.palettes import brewer
 from bokeh.plotting import figure
@@ -201,7 +201,7 @@ def update():
     neighborhoods = p.patches('xs','ys', source = geosource,fill_color ={'field' :'count','transform' : color_mapper},line_color = 'gray', line_width = 0.1, fill_alpha = 1)
     p.add_tools(HoverTool(renderers = [neighborhoods],tooltips = [('Neighborhood','@name'),('Cases','@count')]))
     p.add_layout(color_bar, 'below')
-    show(p)
+    save(p, filename='neighborhood_grouping.html')
 
 
 if __name__ == "__main__":
