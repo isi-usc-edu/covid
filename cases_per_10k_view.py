@@ -9,6 +9,7 @@ from datetime import datetime
 from bokeh.io import save
 from bokeh.models import Column, ColorBar, GeoJSONDataSource, HoverTool, LinearColorMapper
 from bokeh.models.widgets import Div
+from bokeh.resources import CDN
 from bokeh.palettes import brewer
 from bokeh.plotting import figure
 
@@ -243,7 +244,7 @@ def update():
     p.add_tools(HoverTool(renderers = [neighborhoods],tooltips = [('Neighborhood','@name'),('Cases Per 10K','@cases_per_10k')]))
     p.add_layout(color_bar, 'below')
 
-    save(Column(div, p), filename='./data/index.html')
+    save(Column(div, p), filename='./data/index.html', title='cases per 10k view', resources=CDN)
 
 
 if __name__ == "__main__":
