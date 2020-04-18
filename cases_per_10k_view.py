@@ -244,7 +244,8 @@ def update():
     p.add_tools(HoverTool(renderers = [neighborhoods],tooltips = [('Neighborhood','@name'),('Cases Per 10K','@cases_per_10k')]))
     p.add_layout(color_bar, 'below')
 
-    save(Column(div, p), filename='./data/index.html', title='cases per 10k view', resources=CDN)
+    print('done fetching; the time is {}\n'.format(datetime.now()))
+    return save(Column(div, p), filename='./data/index.html', title='cases per 10k view', resources=CDN)
 
 
 if __name__ == "__main__":
